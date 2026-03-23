@@ -15,12 +15,13 @@
   --rm:12px;--rl:16px;--rxl:20px;
 }
 body{background:#111;display:flex;align-items:flex-start;justify-content:center;min-height:100vh;padding:2rem 1rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
-.app{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;width:100%;max-width:480px;background:#000;border-radius:var(--rxl);overflow:hidden;min-height:520px;}
+.app{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;width:100%;max-width:520px;background:#000;border-radius:var(--rxl);overflow:hidden;min-height:520px;transition:max-width 0.3s ease;}
+.app.admin-mode{max-width:800px;}
 
-.search-view{padding:3rem 2rem;text-align:center;display:flex;flex-direction:column;align-items:center;}
+.search-view{padding:3rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;}
 .sv-label{font-size:11px;color:var(--text3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px;}
 .sv-title{font-size:32px;font-weight:700;color:var(--text1);margin-bottom:10px;line-height:1.2;}
-.sv-sub{font-size:15px;color:var(--text2);margin-bottom:2rem;line-height:1.5;}
+.sv-sub{font-size:15px;color:var(--text2);margin-bottom:2rem;line-height:1.5;max-width:320px;}
 .form-card{background:var(--bg1);border:0.5px solid var(--border2);border-radius:var(--rl);padding:1.5rem;width:100%;max-width:400px;margin-bottom:1.5rem;}
 .field{margin-bottom:14px;}
 .field-label{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;display:block;}
@@ -43,7 +44,7 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
 .back-btn{background:none;border:none;color:var(--red2);font-size:14px;cursor:pointer;padding:0;font-family:inherit;display:flex;align-items:center;gap:4px;margin-bottom:1.25rem;}
 .back-btn:hover{opacity:0.8;}
 .rv-order-label{font-size:13px;color:var(--text2);margin-bottom:2px;}
-.rv-order-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
+.rv-order-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:10px;}
 .rv-order-num{font-size:36px;font-weight:700;color:var(--text1);}
 .status-pill{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:99px;background:#2a1010;border:0.5px solid #c0392b60;}
 .pill-dot{width:7px;height:7px;border-radius:50%;background:var(--red2);}
@@ -72,8 +73,8 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
 .vline-seg{width:2px;background:var(--blue-dim);flex:1;min-height:24px;}
 .vline-pend{background:var(--border2);}
 .step-body{flex:1;padding:0 0 20px;}
-.step-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-top:-1px;}
-.step-name{font-size:15px;font-weight:600;color:var(--text1);}
+.step-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-top:-1px;flex-wrap:wrap;}
+.step-name{font-size:15px;font-weight:600;color:var(--text1);flex:1;min-width:150px;}
 .step-name.pend{color:var(--text3);font-weight:400;}
 .step-time{font-size:12px;color:var(--text2);white-space:nowrap;flex-shrink:0;}
 .step-time.active{color:var(--blue);font-weight:500;}
@@ -81,10 +82,10 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
 .step-tag{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:0.08em;background:#1e1e1e;color:var(--text3);border:0.5px solid var(--border2);}
 
 .info-card{margin:0 1.5rem 1.25rem;background:var(--bg1);border:0.5px solid var(--border2);border-radius:var(--rl);overflow:hidden;}
-.info-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:0.5px solid var(--border);}
+.info-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:0.5px solid var(--border);gap:10px;}
 .info-row:last-child{border-bottom:none;}
-.info-lbl{font-size:14px;color:var(--text2);}
-.info-val{font-size:14px;font-weight:500;color:var(--text1);font-family:'SF Mono','Fira Code',monospace;}
+.info-lbl{font-size:14px;color:var(--text2);flex-shrink:0;}
+.info-val{font-size:14px;font-weight:500;color:var(--text1);font-family:'SF Mono','Fira Code',monospace;word-break:break-all;text-align:right;}
 .info-val.order-val{font-weight:700;font-family:inherit;}
 
 .rv-help{text-align:center;padding:0 1.5rem 1.5rem;font-size:14px;color:var(--text2);}
@@ -92,8 +93,9 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
 
 /* ADMIN */
 .admin-view{display:none;}
-.tabs{display:flex;padding:1rem 1.5rem 0;gap:8px;border-bottom:0.5px solid var(--border);margin-bottom:0;}
-.tab-btn{padding:8px 16px;border:none;background:transparent;color:var(--text3);font-size:13px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-0.5px;font-family:inherit;transition:all 0.15s;}
+.tabs{display:flex;padding:1rem 1.5rem 0;gap:4px;border-bottom:0.5px solid var(--border);margin-bottom:0;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab-btn{padding:8px 12px;border:none;background:transparent;color:var(--text3);font-size:13px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-0.5px;font-family:inherit;transition:all 0.15s;white-space:nowrap;}
 .tab-btn.on{color:var(--text1);border-bottom-color:var(--red2);}
 .tab-btn:hover:not(.on){color:var(--text2);}
 .tab-content{padding:1.5rem;}
@@ -104,15 +106,18 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
 .cz-text{font-size:14px;color:var(--text2);margin-bottom:4px;}
 .cz-hint{font-size:11px;color:var(--text3);font-family:'SF Mono','Fira Code',monospace;}
 .cz-dl{display:inline-block;margin-top:12px;font-size:12px;color:var(--red2);cursor:pointer;}
-.code-block{background:var(--bg1);border:0.5px solid var(--border);border-radius:var(--rm);padding:14px 16px;font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:var(--text2);line-height:1.9;margin-bottom:1rem;}
+.code-block{background:var(--bg1);border:0.5px solid var(--border);border-radius:var(--rm);padding:14px 16px;font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:var(--text2);line-height:1.9;margin-bottom:1rem;overflow-x:auto;}
 .code-block .hl{color:var(--blue);}
 .code-block .hlr{color:var(--red2);}
-.mini-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+
+.tbl-container{overflow-x:auto;margin:0 -1.5rem;padding:0 1.5rem;}
+.mini-tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:600px;}
 .mini-tbl th{text-align:left;padding:9px 10px;color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;border-bottom:0.5px solid var(--border);}
 .mini-tbl td{padding:10px 10px;border-bottom:0.5px solid var(--border);color:var(--text2);}
 .mini-tbl tr:last-child td{border-bottom:none;}
 .mini-tbl tr:hover td{background:var(--bg1);}
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.25rem;}
+
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));gap:10px;margin-bottom:1.25rem;}
 .stat-c{background:var(--bg1);border:0.5px solid var(--border);border-radius:var(--rm);padding:12px 14px;}
 .stat-n{font-size:28px;font-weight:600;color:var(--text1);}
 .stat-l{font-size:11px;color:var(--text3);margin-top:2px;}
@@ -120,9 +125,15 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
 .rbtn{padding:8px 18px;background:var(--red);color:#fff;border:none;border-radius:var(--rm);font-size:12px;cursor:pointer;font-family:inherit;}
 .rbtn:hover{background:var(--red2);}
 
-@media(max-width:500px){
-  .sv-title{font-size:26px;}
-  .rv-order-num{font-size:28px;}
+@media(max-width:600px){
+  body{padding:0;}
+  .app{border-radius:0;min-height:100vh;}
+  .sv-title{font-size:28px;}
+  .rv-order-num{font-size:30px;}
+  .stat-row{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:400px){
+  .stat-row{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -134,7 +145,7 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
 <div id="search-view" class="search-view">
   <div class="sv-label">Thailand Betta Fish</div>
   <div class="sv-title">Track your order</div>
-  <div class="sv-sub">Enter your order number and email<br>to see live shipping updates.</div>
+  <div class="sv-sub">Enter your order number and email to see live shipping updates.</div>
 
   <div class="form-card">
     <div class="field">
@@ -318,39 +329,41 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
       <div class="stat-c"><div class="stat-n" style="color:#4a9eff;">29</div><div class="stat-l">With carrier</div></div>
     </div>
     <div class="section-title">Recent orders</div>
-    <table class="mini-tbl">
-      <thead><tr><th>Order</th><th>Customer</th><th>Step</th><th>Carrier tracking</th><th>Updated</th></tr></thead>
-      <tbody>
-        <tr>
-          <td style="color:#fff;font-family:monospace;">#1042</td>
-          <td>John S.</td>
-          <td><span style="padding:2px 8px;border-radius:4px;font-size:10px;background:#1a2a3a;color:#4a9eff;font-weight:600;">Step 5 — UPS</span></td>
-          <td style="font-family:monospace;font-size:11px;">1Z999AA10123456784</td>
-          <td>Mar 13</td>
-        </tr>
-        <tr>
-          <td style="color:#fff;font-family:monospace;">#1041</td>
-          <td>Sarah M.</td>
-          <td><span style="padding:2px 8px;border-radius:4px;font-size:10px;background:#2a1f08;color:#f0a500;font-weight:600;">Step 2 — Exported</span></td>
-          <td style="color:#555;">—</td>
-          <td>Mar 11</td>
-        </tr>
-        <tr>
-          <td style="color:#fff;font-family:monospace;">#1040</td>
-          <td>Mike T.</td>
-          <td><span style="padding:2px 8px;border-radius:4px;font-size:10px;background:#0d2a1a;color:#00d4aa;font-weight:600;">Delivered</span></td>
-          <td style="font-family:monospace;font-size:11px;">9400111899220001</td>
-          <td>Mar 10</td>
-        </tr>
-        <tr>
-          <td style="color:#fff;font-family:monospace;">#1039</td>
-          <td>Emily R.</td>
-          <td><span style="padding:2px 8px;border-radius:4px;font-size:10px;background:#1e1a2e;color:#a78bfa;font-weight:600;">Step 3 — USA</span></td>
-          <td style="color:#555;">—</td>
-          <td>Mar 12</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="tbl-container">
+      <table class="mini-tbl">
+        <thead><tr><th>Order</th><th>Customer</th><th>Step</th><th>Carrier tracking</th><th>Updated</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="color:#fff;font-family:monospace;">#1042</td>
+            <td>John S.</td>
+            <td><span style="padding:2px 8px;border-radius:4px;font-size:10px;background:#1a2a3a;color:#4a9eff;font-weight:600;">Step 5 — UPS</span></td>
+            <td style="font-family:monospace;font-size:11px;">1Z999AA10123456784</td>
+            <td>Mar 13</td>
+          </tr>
+          <tr>
+            <td style="color:#fff;font-family:monospace;">#1041</td>
+            <td>Sarah M.</td>
+            <td><span style="padding:2px 8px;border-radius:4px;font-size:10px;background:#2a1f08;color:#f0a500;font-weight:600;">Step 2 — Exported</span></td>
+            <td style="color:#555;">—</td>
+            <td>Mar 11</td>
+          </tr>
+          <tr>
+            <td style="color:#fff;font-family:monospace;">#1040</td>
+            <td>Mike T.</td>
+            <td><span style="padding:2px 8px;border-radius:4px;font-size:10px;background:#0d2a1a;color:#00d4aa;font-weight:600;">Delivered</span></td>
+            <td style="font-family:monospace;font-size:11px;">9400111899220001</td>
+            <td>Mar 10</td>
+          </tr>
+          <tr>
+            <td style="color:#fff;font-family:monospace;">#1039</td>
+            <td>Emily R.</td>
+            <td><span style="padding:2px 8px;border-radius:4px;font-size:10px;background:#1e1a2e;color:#a78bfa;font-weight:600;">Step 3 — USA</span></td>
+            <td style="color:#555;">—</td>
+            <td>Mar 12</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="tab-content" id="at-upload" style="display:none;">
@@ -374,7 +387,7 @@ body{background:#111;display:flex;align-items:flex-start;justify-content:center;
 
   <div class="tab-content" id="at-api" style="display:none;">
     <div class="section-title">Connected services</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:10px;margin-bottom:1rem;">
       <div style="background:var(--bg1);border:0.5px solid var(--border);border-radius:var(--rl);padding:1rem;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
           <div style="width:7px;height:7px;border-radius:50%;background:#00d4aa;"></div>
@@ -421,16 +434,19 @@ function showResult(){
   document.getElementById('search-view').style.display='none';
   document.getElementById('result-view').style.display='block';
   document.getElementById('admin-view').style.display='none';
+  document.getElementById('app').classList.remove('admin-mode');
 }
 function goBack(){
   document.getElementById('search-view').style.display='flex';
   document.getElementById('result-view').style.display='none';
   document.getElementById('admin-view').style.display='none';
+  document.getElementById('app').classList.remove('admin-mode');
 }
 function adminMode(){
   document.getElementById('search-view').style.display='none';
   document.getElementById('result-view').style.display='none';
   document.getElementById('admin-view').style.display='block';
+  document.getElementById('app').classList.add('admin-mode');
 }
 function atab(id,btn){
   ['orders','upload','api'].forEach(function(t){
